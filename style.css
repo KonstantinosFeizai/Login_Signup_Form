@@ -10,55 +10,66 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    font-family: poppins , sans-serif;
-    font-size: 12pt;
-    color: var(--text-color);
-    text-align: center;
-}
 
 body {
-    min-height: 100vh;
+    height: 100vh; /* Full viewport height */
     background-image: url(pexels-karolina-grabowska-4710933.jpg);
     background-size: cover;
-    background-position: right;
+    background-repeat: no-repeat;
+    background-position: center;
     overflow: hidden;
-    position: relative;
+    font-family: 'Poppins',arial, sans-serif;
+    font-size: 12pt;
+    color: var(--text-color);
+    width: 100%;
 }
 
+/* FLEX CONTAINER to align .wrapper & .logo-container */
+.flex-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh; /* Full height */
+    align-items: stretch;
+    gap: 0;
+}
 
-
-.wrapper{
-    box-sizing: border-box;
+/* LEFT SIDE (40% width - Text Content) */
+.wrapper {
+    display: flex;
+    flex-basis: 40%; /* 40% width */
     background-color: var(--base-color);
     height: 100vh;
-    width: max(40%,600px);
-    padding: 10px;
-    border-radius: 0 2px 20px 0;
-    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    opacity: 2;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    border-radius: 0 20px 20px 0;
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-h1,h2{
-    font-size: 3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-}
 
-h2 {
-    padding-bottom: 50px;
-}
-
+/* Navigation  */
 .navigation {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.navigation a{
+    margin: 15px;
+}
+
+.navigation a:hover{
+    background-color: var(--text-color);
+}
+
+
+/* form styling */
 form{
     width: min(400px,100%);
     margin-top: 20px;
@@ -81,7 +92,6 @@ form label{
     width: 50px;
     background-color: var(--accent-color);
     fill: white !important;
-    /* color: var(--base-color); */
     border-radius: 10px 0 0 10px;
     display: flex;
     justify-content: center;
@@ -144,6 +154,7 @@ form button:focus{
     background-color: var(--text-color);
 }
 
+/* a tag styling */
 a{
     text-decoration: none;
     color: var(--accent-color);
@@ -154,11 +165,33 @@ a:hover{
     
 }
 
-.navigation a:hover{
-    background-color: var(--text-color);
+p a:hover{
+    color: #ff0450;
 }
+
+/* TEXT STYLING */
+h1,h2{
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+h2 {
+    display: inline-block;
+    margin-bottom: 50px;
+    transition: color 0.5s ease transform 0.5s ease;
+}
+
+
+h1:hover,
+h2:hover {
+    color: var(--accent-color);
+    transform: scale(1.3);
+}
+
+
 .welcome-button {
-    margin-top: 10px;
+    margin-top: 20px;
     border: none;
     border-radius: 1000px;
     padding: .85em 4em;
@@ -170,36 +203,41 @@ a:hover{
     cursor: pointer;
 }
 
-.a.button:hover {
-    background-color: var(--text-color);
-    text-decoration: underline;
+
+
+/* logo  container styling */
+
+.logo-container {
+    display: flex;
+    flex: 1;
+    flex-basis: 60%; /* 60% width */
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    position: absolute;
+    margin: auto;
     width: 100px;
     height: 100px;
-    margin-bottom: 20px;
-    margin-left: 400px;
-    padding: 20px;
+    padding: 10px;
     background-color: #7782e4;
-    top:50%;
-    transform: translateY(-50%);
-    border-radius: calc(100px/2);
+    border-radius: 50%;
     opacity: 0.9;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    transition: transform 2s,background-color 2.5s;
+    transition: transform 0.8s, background-color 0.8s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo:hover {
-    opacity: 0.9;
     background-color: var(--text-color);
-    transform: translateY(-50%) rotate(360deg);
+    transform: rotate(360deg) scale(1.3);
 }
 
-.logo:hover::after {
-    background-color: var(--text-color);
-}
+
+/* responsiveness */
 @media(max-width:1100px){
     .wrapper{
         width:min(600px,100%);
@@ -207,6 +245,44 @@ a:hover{
     }
 }
 
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column; /* Stack sections vertically */
+        background-color: var(--base-color);
+        height: 100%;
+        opacity: 0.93;
+    }
+
+    .wrapper, .logo-container {
+        flex: 0 0 50%; /* Allow sections to resize naturally */
+        width: 100%; /* Full width for both sections */
+        height: auto; 
+        box-shadow: none;
+    }
+
+    .wrapper {
+        padding: 20px; /* Add padding to text content */
+        border-radius: 0; /* Remove border-radius for stacked layout */
+    }
+
+    .logo-container {
+        height: auto;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--base-color);
+    }
+
+    .wrapper .navigation {
+        flex-direction: column; /* Stack navigation links vertically */
+        align-items: center;
+        gap: 10px; /* Add space between navigation links */
+    }
+}
+
+
+
+/* Error message styling .js */
 form div.incorrect label{
     background-color:red;
 }

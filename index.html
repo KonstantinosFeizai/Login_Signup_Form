@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/Login_SignUp_form/style.css">
     <link rel="shortcut icon" href="logo.png" type="image/png">
-    <script type="text/javascript" src="validation.js" defer></script>
     <title>Welcome</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Welcome</h1>
-        <p id="error-message"></p>
-        
-        <div class="navigation">
-            <a href="login.html" class="welcome-button">Login</a>
-            <a href="signup.html" class="welcome-button">Signup</a>
+    <!-- FLEX CONTAINER (Aligns left & right sections) -->
+    <div class="flex-container">
+        <!-- LEFT SIDE (Content - 40%) -->
+        <div class="wrapper">
+            <h2>Welcome</h2>
+            <p id="error-message"></p>
+            <div class="navigation">
+                <a href="login.html" class="welcome-button">Login</a>
+                <a href="signup.html" class="welcome-button">Signup</a>
+            </div>
+            <!-- Hide Button -->
+        </div>
+
+        <!-- RIGHT SIDE (Logo - 60%) -->
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo" class="logo">
+            </a>
         </div>
     </div>
-    <a href="index.html">
-    <img src="logo.png" alt="Logo" class="logo">
-    </a>
 </body>
 </html>
